@@ -1,1 +1,1 @@
-include ':app', ':smart-pay'
+include ':app', ':smart-pay', ':smart-pay-test'
