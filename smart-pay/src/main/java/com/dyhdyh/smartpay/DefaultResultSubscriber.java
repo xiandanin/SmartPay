@@ -1,4 +1,4 @@
-package com.dyhdyh.smartpay.subscriber;
+package com.dyhdyh.smartpay;
 
 import com.dyhdyh.smartpay.OnSmartPaymentListener;
 import com.dyhdyh.smartpay.SmartPayResult;

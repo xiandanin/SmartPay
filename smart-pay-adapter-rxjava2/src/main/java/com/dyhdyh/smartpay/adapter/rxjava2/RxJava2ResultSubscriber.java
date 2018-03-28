@@ -1,4 +1,4 @@
-package com.dyhdyh.smartpay.subscriber;
+package com.dyhdyh.smartpay.adapter.rxjava2;
 
 import com.dyhdyh.smartpay.SmartPayResultSubscriber;
 

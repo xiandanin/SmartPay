@@ -9,7 +9,7 @@ import com.dyhdyh.smartpay.wechat.WeChatPayImpl;
  * @author dengyuhan
  *         created 2018/3/28 19:48
  */
-public class DefaultCallFactory implements SmartPayCallFactory {
+public class DefaultCallFactory implements SmartPayCallAdapter {
     private Activity mActivity;
 
     public DefaultCallFactory(Activity activity) {
@@ -18,7 +18,7 @@ public class DefaultCallFactory implements SmartPayCallFactory {
 
 
     @Override
-    public SmartPayCall create(PayType payType) {
+    public SmartPayCall adapt(PayType payType) {
         SmartPayCall call = null;
         if (payType == PayType.WECHAT) {
             call = new WeChatPayImpl();

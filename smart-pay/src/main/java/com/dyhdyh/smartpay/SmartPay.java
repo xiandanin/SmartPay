@@ -2,8 +2,6 @@ package com.dyhdyh.smartpay;
 
 import android.app.Activity;
 
-import com.dyhdyh.smartpay.subscriber.DefaultResultSubscriber;
-
 import java.util.Map;
 
 /**
@@ -13,8 +11,8 @@ import java.util.Map;
 public class SmartPay {
     private Activity mActivity;
     private PayType mPayType;
-    private SmartPayCallFactory mCallFactory;
-    private SmartPaymentParamsFactory mParamsFactory;
+    private SmartPayCallAdapter mCallFactory;
+    private SmartPayParamsFactory mParamsFactory;
     /**
      * 额外的参数
      */
@@ -42,7 +40,7 @@ public class SmartPay {
         return this;
     }
 
-    public SmartPay callFactory(SmartPayCallFactory factory) {
+    public SmartPay callFactory(SmartPayCallAdapter factory) {
         if (factory == null) {
             return this;
         }
@@ -51,12 +49,12 @@ public class SmartPay {
     }
 
 
-    public SmartPay converterFactory(SmartPayConverterFactory factory) {
+    public SmartPay converterFactory(SmartPayConverterAdapter factory) {
         SmartPayResultObserver.setConverterFactory(factory);
         return this;
     }
 
-    public SmartPay params(SmartPaymentParamsFactory factory) {
+    public SmartPay params(SmartPayParamsFactory factory) {
         this.mParamsFactory = factory;
         return this;
     }
@@ -77,12 +75,12 @@ public class SmartPay {
         return this;
     }
 
-    public <T> T asObservable2(SmartPayCallAdapter<T> adapter) {
-        return (T) mCallFactory.create(mPayType).call(mParamsFactory.build(mPayType), mExtras);
+    public void start() {
+        mCallFactory.adapt(mPayType).call(mParamsFactory.build(mPayType), mExtras);
     }
 
-    public void start() {
-        mCallFactory.create(mPayType).call(mParamsFactory.build(mPayType), mExtras);
+    public <T> T call(Class<T> observable) {
+        return (T) mCallFactory.adapt(mPayType).call(mParamsFactory.build(mPayType), mExtras);
     }
 
 }

@@ -1,7 +1,5 @@
 package com.dyhdyh.smartpay;
 
-import android.util.Log;
-
 import java.util.Map;
 
 /**
@@ -10,20 +8,19 @@ import java.util.Map;
  */
 public class SmartPayResultObserver {
     private static SmartPayResultSubscriber mSubscriber;
-    private static SmartPayConverterFactory mConverterFactory;
+    private static SmartPayConverterAdapter mConverterFactory;
 
     public static void register(SmartPayResultSubscriber subscriber) {
         mSubscriber = subscriber;
     }
 
-    public static void setConverterFactory(SmartPayConverterFactory factory) {
+    public static void setConverterFactory(SmartPayConverterAdapter factory) {
         mConverterFactory = factory;
     }
 
     public static void notify(PayType payType, Map<String, String> result) {
         if (mSubscriber != null) {
-            Log.d("支付结果--------------->", payType + " " + result + " " + Thread.currentThread().getName());
-            mSubscriber.onNotifyResult(mConverterFactory.create(payType).convert(result));
+            mSubscriber.onNotifyResult(mConverterFactory.adapt(payType).convert(result));
         }
         unregister();
     }

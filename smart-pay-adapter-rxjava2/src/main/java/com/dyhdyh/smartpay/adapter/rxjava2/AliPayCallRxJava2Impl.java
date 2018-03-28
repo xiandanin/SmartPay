@@ -1,11 +1,12 @@
-package com.dyhdyh.smartpay.alipay;
+package com.dyhdyh.smartpay.adapter.rxjava2;
 
 import android.app.Activity;
 
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayResult;
 import com.dyhdyh.smartpay.SmartPayResultObserver;
-import com.dyhdyh.smartpay.subscriber.RxJava2ResultSubscriber;
+import com.dyhdyh.smartpay.alipay.AliPayBaseCall;
+import com.dyhdyh.smartpay.alipay.AliPayParams;
 
 import java.util.Map;
 

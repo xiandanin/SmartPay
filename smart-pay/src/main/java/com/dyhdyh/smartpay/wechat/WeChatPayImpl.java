@@ -1,7 +1,7 @@
 package com.dyhdyh.smartpay.wechat;
 
-import com.dyhdyh.smartpay.SmartPaymentConfig;
 import com.dyhdyh.smartpay.SmartPayCall;
+import com.dyhdyh.smartpay.SmartPayParams;
 
 import java.util.Map;
 
@@ -11,8 +11,9 @@ import java.util.Map;
  */
 public class WeChatPayImpl implements SmartPayCall {
 
-    @Override
-    public void startPay(SmartPaymentConfig config, Map extra) {
 
+    @Override
+    public Object call(SmartPayParams params, Map extras) {
+        return null;
     }
 }

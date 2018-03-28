@@ -39,7 +39,7 @@ public class AliPayCallImpl extends AliPayBaseCall<Void> {
             @Override
             public void run() {
                 Map<String, String> result = getPayTask().payV2(params.getOrderStr(), params.isShowPayLoading());
-                mHandler.obtainMessage(SDK_PAY_FLAG, result);
+                mHandler.sendMessage(mHandler.obtainMessage(SDK_PAY_FLAG, result));
             }
         };
         Thread thread = new Thread(runnable);

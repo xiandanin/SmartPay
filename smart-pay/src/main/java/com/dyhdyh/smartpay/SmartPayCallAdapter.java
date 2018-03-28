@@ -2,10 +2,9 @@ package com.dyhdyh.smartpay;
 
 /**
  * @author dengyuhan
- *         created 2018/3/28 20:35
+ *         created 2018/3/28 19:47
  */
-public interface SmartPayCallAdapter<A> {
+public interface SmartPayCallAdapter {
 
-    /** call执行的代理方法 */
-    A adapt();
+    SmartPayCall adapt(PayType payType);
 }
