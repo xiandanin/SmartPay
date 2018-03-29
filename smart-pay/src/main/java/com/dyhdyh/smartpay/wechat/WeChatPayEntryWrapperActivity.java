@@ -3,7 +3,6 @@ package com.dyhdyh.smartpay.wechat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayGlobalController;
@@ -43,7 +42,7 @@ public abstract class WeChatPayEntryWrapperActivity extends Activity {
     };
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Object appIdObj = SmartPayGlobalController.getInstance().getExtras().get(WeChatPayParams.KEY_APPID);
