@@ -7,9 +7,13 @@ import java.util.Map;
  *         created 2018/3/28 19:18
  */
 public class SmartPayResult {
+    public static final int STATUS_SUCCESS = 1;
+    public static final int STATUS_FAIL = 2;
+    public static final int STATUS_CANCEL = 3;
+
     private PayType payType;
-    private boolean success;
-    private int statusCode;
+    private int status;
+    private int code;
     private String message;
     private Map<String, String> result;
 
@@ -21,20 +25,20 @@ public class SmartPayResult {
         this.payType = payType;
     }
 
-    public int getStatusCode() {
-        return statusCode;
+    public int getStatus() {
+        return status;
     }
 
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public int getCode() {
+        return code;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getMessage() {

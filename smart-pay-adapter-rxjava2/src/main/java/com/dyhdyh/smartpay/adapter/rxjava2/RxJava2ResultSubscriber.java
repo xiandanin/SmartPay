@@ -19,6 +19,7 @@ public class RxJava2ResultSubscriber<T> implements SmartPayResultSubscriber<T> {
     public void onNotifyResult(T result) {
         if (mEmitter != null) {
             mEmitter.onNext(result);
+            mEmitter.onComplete();
         }
     }
 }

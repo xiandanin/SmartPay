@@ -1,4 +1,4 @@
-package com.dyhdyh.smartpay.alipay;
+package com.dyhdyh.smartpay.wechat;
 
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayResult;
@@ -8,20 +8,20 @@ import java.util.Map;
 
 /**
  * @author dengyuhan
- *         created 2018/3/28 19:21
+ *         created 2018/3/29 11:22
  */
-public class AliPayResultConverter implements SmartPayResultConverter<SmartPayResult> {
+public class WeChatPayResultConverter implements SmartPayResultConverter<SmartPayResult> {
     @Override
     public SmartPayResult convert(Map<String, String> resultMap) {
         SmartPayResult result = new SmartPayResult();
         try {
-            result.setPayType(PayType.ALIPAY);
+            result.setPayType(PayType.WECHAT);
             result.setResult(resultMap);
-            result.setMessage(resultMap.get("memo"));
-            result.setCode(Integer.parseInt(resultMap.get("resultStatus")));
-            if (result.getCode() == 9000) {
+            result.setMessage(resultMap.get("err_str"));
+            result.setCode(Integer.parseInt(resultMap.get("err_code")));
+            if (result.getCode() == 0) {
                 result.setStatus(SmartPayResult.STATUS_SUCCESS);
-            } else if (result.getCode() == 6001) {
+            } else if (result.getCode() == -2) {
                 result.setStatus(SmartPayResult.STATUS_CANCEL);
             } else {
                 result.setStatus(SmartPayResult.STATUS_FAIL);

@@ -1,20 +1,18 @@
-package com.dyhdyh.smartpay.adapter.rxjava2;
+package com.dyhdyh.smartpay;
 
 import android.app.Activity;
 
-import com.dyhdyh.smartpay.PayType;
-import com.dyhdyh.smartpay.SmartPayCall;
-import com.dyhdyh.smartpay.SmartPayCallAdapter;
+import com.dyhdyh.smartpay.alipay.AliPayCallImpl;
 import com.dyhdyh.smartpay.wechat.WeChatPayImpl;
 
 /**
  * @author dengyuhan
  *         created 2018/3/28 19:48
  */
-public class RxJava2CallFactory implements SmartPayCallAdapter {
+public class DefaultCallAdapter implements SmartPayCallAdapter {
     private Activity mActivity;
 
-    public RxJava2CallFactory(Activity activity) {
+    public DefaultCallAdapter(Activity activity) {
         this.mActivity = activity;
     }
 
@@ -23,9 +21,9 @@ public class RxJava2CallFactory implements SmartPayCallAdapter {
     public SmartPayCall adapt(PayType payType) {
         SmartPayCall call = null;
         if (payType == PayType.WECHAT) {
-            call = new WeChatPayImpl();
+            call = new WeChatPayImpl(mActivity);
         } else if (payType == PayType.ALIPAY) {
-            call = new AliPayCallRxJava2Impl(mActivity);
+            call = new AliPayCallImpl(mActivity);
         }
         return call;
     }

@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.dyhdyh.smartpay.PayType;
-import com.dyhdyh.smartpay.SmartPayResultObserver;
+import com.dyhdyh.smartpay.SmartPayGlobalController;
 
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class AliPayCallImpl extends AliPayBaseCall<Void> {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
-                    SmartPayResultObserver.notify(PayType.ALIPAY, (Map<String, String>) msg.obj);
+                    SmartPayGlobalController.getInstance().notify(PayType.ALIPAY, (Map<String, String>) msg.obj);
                     break;
                 }
             }
@@ -34,11 +34,11 @@ public class AliPayCallImpl extends AliPayBaseCall<Void> {
 
 
     @Override
-    public Void call(final AliPayParams params, Map<String, Object> extras) {
+    public Void call(final Map<String, Object> params) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Map<String, String> result = getPayTask().payV2(params.getOrderStr(), params.isShowPayLoading());
+                Map<String, String> result = callPay(params);
                 mHandler.sendMessage(mHandler.obtainMessage(SDK_PAY_FLAG, result));
             }
         };
