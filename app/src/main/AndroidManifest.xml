@@ -18,8 +18,7 @@
         </activity>
         <activity
             android:name="net.sourceforge.simcpux.wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:theme="@android:style/Theme.Translucent"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:launchMode="singleTop" />
 
     </application>
