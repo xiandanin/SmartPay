@@ -1,1 +1,1 @@
-include ':app', ':smart-pay', ':smart-pay-test', ':smart-pay-adapter-rxjava', ':smart-pay-adapter-rxjava2'
+include ':app', ':smartpay', ':smartpay-test', ':smartpay-adapter-rxjava', ':smartpay-adapter-rxjava2'
