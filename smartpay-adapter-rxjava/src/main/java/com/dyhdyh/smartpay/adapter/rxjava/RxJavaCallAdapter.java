@@ -1,12 +1,12 @@
-package com.dyhdyh.smartpay.adapter.rxjava2;
+package com.dyhdyh.smartpay.adapter.rxjava;
 
 import android.app.Activity;
 
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayCall;
 import com.dyhdyh.smartpay.SmartPayCallAdapter;
-import com.dyhdyh.smartpay.adapter.rxjava2.alipay.AliPayCallRxJavaImpl;
-import com.dyhdyh.smartpay.adapter.rxjava2.wechat.WeChatPayCallRxJavaImpl;
+import com.dyhdyh.smartpay.adapter.rxjava.alipay.AliPayCallRxJavaImpl;
+import com.dyhdyh.smartpay.adapter.rxjava.wechat.WeChatPayCallRxJavaImpl;
 
 /**
  * @author dengyuhan

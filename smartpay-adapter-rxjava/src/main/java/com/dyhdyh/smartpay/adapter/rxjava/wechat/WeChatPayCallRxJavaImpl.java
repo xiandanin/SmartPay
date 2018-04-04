@@ -1,29 +1,26 @@
-package com.dyhdyh.smartpay.adapter.rxjava2.alipay;
+package com.dyhdyh.smartpay.adapter.rxjava.wechat;
 
-import android.app.Activity;
+import android.content.Context;
 
-import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayGlobalController;
-import com.dyhdyh.smartpay.adapter.rxjava2.RxJavaResultSubscriber;
-import com.dyhdyh.smartpay.alipay.AliPayBaseCall;
+import com.dyhdyh.smartpay.SmartPayResult;
+import com.dyhdyh.smartpay.adapter.rxjava.RxJavaResultSubscriber;
+import com.dyhdyh.smartpay.wechat.WeChatPayBaseCall;
 
 import java.util.Map;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.schedulers.Schedulers;
-
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * @author dengyuhan
- *         created 2018/3/28 20:08
+ *         created 2018/3/29 13:55
  */
-public class AliPayCallRxJavaImpl<SmartPayResult> extends AliPayBaseCall<Observable<SmartPayResult>> {
-
-    public AliPayCallRxJavaImpl(Activity activity) {
-        super(activity);
+public class WeChatPayCallRxJavaImpl extends WeChatPayBaseCall<Observable<SmartPayResult>> {
+    public WeChatPayCallRxJavaImpl(Context context) {
+        super(context);
     }
-
 
     @Override
     public Observable<SmartPayResult> call(final Map<String, Object> params) {
@@ -33,14 +30,13 @@ public class AliPayCallRxJavaImpl<SmartPayResult> extends AliPayBaseCall<Observa
                 try {
                     SmartPayGlobalController.getInstance().register(new RxJavaResultSubscriber<>(subscriber));
 
-                    Map<String, String> result = callPay(params);
+                    callPay(params);
 
-                    SmartPayGlobalController.getInstance().notify(PayType.ALIPAY, result);
                 } catch (Exception e) {
                     e.printStackTrace();
                     subscriber.onError(e);
                 }
             }
-        }).subscribeOn(Schedulers.io());
+        }).subscribeOn(AndroidSchedulers.mainThread());
     }
 }

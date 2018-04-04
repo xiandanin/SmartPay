@@ -9,9 +9,7 @@ import android.widget.Toast;
 import com.dyhdyh.smartpay.OnSmartPaymentListener;
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPay;
-import com.dyhdyh.smartpay.SmartPayConverterAdapter;
 import com.dyhdyh.smartpay.SmartPayResult;
-import com.dyhdyh.smartpay.SmartPayResultConverter;
 import com.dyhdyh.smartpay.adapter.rxjava2.RxJava2CallAdapter;
 import com.dyhdyh.smartpay.alipay.AliPayParams;
 import com.dyhdyh.smartpay.test.alipay.AliPayTest;
@@ -98,7 +96,12 @@ public class MainActivity extends AppCompatActivity {
         if (payType == PayType.ALIPAY) {
             params.putAll(AliPayParams.build(AliPayTest.generateOrderStr(AliPayTest.TEST_APPID, AliPayTest.TEST_RSA2_PRIVATE)));
         } else if (payType == PayType.WECHAT) {
-            params.putAll(WeChatPayTest.getTestParams());
+            try {
+                params.putAll(WeChatPayTest.getTestParams());
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "没有获取到测试json", Toast.LENGTH_SHORT).show();
+            }
         }
         return params;
     }

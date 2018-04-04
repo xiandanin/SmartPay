@@ -1,5 +1,7 @@
 package com.dyhdyh.smartpay.test.wechat;
 
+import android.text.TextUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,15 +17,18 @@ import okhttp3.Response;
 
 /**
  * @author dengyuhan
- *         created 2018/3/29 10:27
+ * created 2018/3/29 10:27
  */
 public class WeChatPayTest {
 
     public static String testJson;
 
-    public static Map<String, String> getTestParams() {
+    public static Map<String, String> getTestParams() throws NullPointerException {
         Map<String, String> map = new HashMap<>();
         try {
+            if (TextUtils.isEmpty(testJson)) {
+                throw new NullPointerException();
+            }
             JSONObject jsonObject = new JSONObject(testJson);
             map.put("wechat_appid", jsonObject.optString("appid"));
             map.put("wechat_partnerid", jsonObject.optString("partnerid"));
