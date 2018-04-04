@@ -16,7 +16,10 @@ ext {
     jcenter =
             [
                     //项目名称
-                    name       : "SmartPay",
+                    name       : "smartpay",
+                    name_rxjava       : "smartpay-adapter-rxjava",
+                    name_rxjava2       : "smartpay-adapter-rxjava2",
+                    name_test       : "smartpay-test",
                     groupId    : "com.dyhdyh.smartpay",
                     //项目地址
                     siteUrl    : "https://github.com/dengyuhan/SmartPay",
