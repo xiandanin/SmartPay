@@ -2,6 +2,6 @@ apply plugin: 'com.android.library'
 apply from: "bintray.gradle"
 
 dependencies {
-    provided files('libs/alipaySdk-20180316.jar')
-    provided 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.4'
+    compileOnly files('libs/alipaySdk-20180316.jar')
+    compileOnly 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.4'
 }

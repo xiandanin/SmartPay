@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply from: "bintray.gradle"
 
 dependencies {
-    provided 'io.reactivex.rxjava2:rxjava:2.1.12'
-    provided 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    provided project(':smartpay')
+    compileOnly 'io.reactivex.rxjava2:rxjava:2.1.12'
+    compileOnly 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    compileOnly project(':smartpay')
 }

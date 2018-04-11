@@ -7,7 +7,7 @@ android {
         applicationId "com.dyhdyh.smartpay.example"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         flavorDimensions "versionCode"
     }
