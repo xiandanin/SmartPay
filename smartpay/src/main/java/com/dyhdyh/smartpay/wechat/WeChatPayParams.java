@@ -3,6 +3,9 @@ package com.dyhdyh.smartpay.wechat;
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayParams;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +21,22 @@ public class WeChatPayParams extends SmartPayParams {
     public static final String KEY_TIMESTAMP = getKey(PayType.WECHAT, "timestamp");
     public static final String KEY_PREPAYID = getKey(PayType.WECHAT, "prepayid");
     public static final String KEY_SIGN = getKey(PayType.WECHAT, "sign");
+
+    public static Map<String, Object> build(String json) {
+        try {
+            final JSONObject jsonObject = new JSONObject(json);
+            return build(jsonObject.optString("appid"),
+                    jsonObject.optString("partnerid"),
+                    jsonObject.optString("package"),
+                    jsonObject.optString("noncestr"),
+                    jsonObject.optString("timestamp"),
+                    jsonObject.optString("prepayid"),
+                    jsonObject.optString("sign"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new HashMap<>();
+        }
+    }
 
     public static Map<String, Object> build(String appid, String partnerid, String noncestr, String timestamp, String prepayid, String sign) {
         return build(appid, partnerid, "Sign=WXPay", noncestr, timestamp, prepayid, sign);
