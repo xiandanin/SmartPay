@@ -16,10 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 封装好回调的WXPayEntryActivity
+ *
  * @author dengyuhan
  *         created 2018/3/29 11:14
  */
-public abstract class WeChatPayEntryWrapperActivity extends Activity {
+public abstract class SmartPayWXPayEntryActivity extends Activity {
 
     private IWXAPI api;
     private IWXAPIEventHandler mEventHandler = new IWXAPIEventHandler() {

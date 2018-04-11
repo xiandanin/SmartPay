@@ -2,6 +2,9 @@ package com.dyhdyh.smartpay;
 
 import android.app.Activity;
 
+import com.dyhdyh.smartpay.alipay.AliPayParams;
+import com.dyhdyh.smartpay.wechat.WeChatPayParams;
+
 import java.util.Map;
 
 /**
@@ -47,6 +50,16 @@ public class SmartPay {
     public SmartPay converterAdapter(SmartPayConverterAdapter adapter) {
         SmartPayGlobalController.getInstance().setConverterAdapter(adapter);
         return this;
+    }
+
+    public SmartPay params(String paramsString) {
+        if (PayType.ALIPAY == mPayType) {
+            return params(AliPayParams.build(paramsString));
+        } else if (PayType.WECHAT == mPayType) {
+            return params(WeChatPayParams.build(paramsString));
+        } else {
+            return this;
+        }
     }
 
     public SmartPay params(Map<String, Object> params) {

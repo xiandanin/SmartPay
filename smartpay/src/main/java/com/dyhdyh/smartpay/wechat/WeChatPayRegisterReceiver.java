@@ -17,6 +17,7 @@ public class WeChatPayRegisterReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Object appIdObj = SmartPayGlobalController.getInstance().getExtras().get(WeChatPayParams.KEY_APPID);
+        //Log.d("onReceive------>", appIdObj + "--->");
         if (appIdObj != null && appIdObj instanceof String) {
             String appid = (String) appIdObj;
             final IWXAPI msgApi = WXAPIFactory.createWXAPI(context, null);

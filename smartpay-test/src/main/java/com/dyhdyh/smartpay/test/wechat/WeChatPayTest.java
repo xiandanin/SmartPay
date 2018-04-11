@@ -17,7 +17,7 @@ import okhttp3.Response;
 
 /**
  * @author dengyuhan
- * created 2018/3/29 10:27
+ *         created 2018/3/29 10:27
  */
 public class WeChatPayTest {
 
@@ -63,7 +63,8 @@ public class WeChatPayTest {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        testJson = response.body().string();
+                        String json = response.body().string();
+                        testJson = json.substring(json.lastIndexOf("{"));
                     }
                 });
 

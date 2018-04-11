@@ -16,15 +16,17 @@ public class OrderInfoUtil2_0 {
 
     /**
      * 构造支付订单参数列表
+     *
      * @param app_id appid
-     * @param title 标题
-     * @param desc 描述
-     * @param rsa2 密钥
+     * @param title  标题
+     * @param desc   描述
+     * @param rsa2   密钥
      * @return
      */
     public static Map<String, String> buildOrderParamMap(String app_id, String title, String desc, boolean rsa2) {
         Map<String, String> keyValues = new HashMap<String, String>();
-        String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());
+        //String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());
+        String timestamp = "2018-04-11 17:00:00";
 
         keyValues.put("app_id", app_id);
 
@@ -138,7 +140,8 @@ public class OrderInfoUtil2_0 {
         Random r = new Random();
         key = key + r.nextInt();
         key = key.substring(0, 15);
-        return key;
+        //return key;
+        return "999999999999";
     }
 
 }

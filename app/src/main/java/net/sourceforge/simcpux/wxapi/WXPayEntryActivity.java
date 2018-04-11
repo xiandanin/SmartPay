@@ -1,7 +1,7 @@
 package net.sourceforge.simcpux.wxapi;
 
 
-import com.dyhdyh.smartpay.wechat.WeChatPayEntryWrapperActivity;
+import com.dyhdyh.smartpay.wechat.SmartPayWXPayEntryActivity;
 
-public class WXPayEntryActivity extends WeChatPayEntryWrapperActivity {
+public class WXPayEntryActivity extends SmartPayWXPayEntryActivity {
 }
