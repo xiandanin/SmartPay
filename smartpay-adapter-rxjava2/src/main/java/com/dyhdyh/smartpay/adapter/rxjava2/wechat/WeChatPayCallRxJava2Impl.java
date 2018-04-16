@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.dyhdyh.smartpay.SmartPayResult;
 import com.dyhdyh.smartpay.SmartPayGlobalController;
-import com.dyhdyh.smartpay.adapter.rxjava2.RxJava2ResultSubscriber;
+import com.dyhdyh.smartpay.adapter.rxjava2.RxJava2ResultHandler;
 import com.dyhdyh.smartpay.wechat.WeChatPayBaseCall;
 
 import java.util.Map;
@@ -29,7 +29,7 @@ public class WeChatPayCallRxJava2Impl extends WeChatPayBaseCall<Observable<Smart
             @Override
             public void subscribe(ObservableEmitter<SmartPayResult> emitter) throws Exception {
                 try {
-                    SmartPayGlobalController.getInstance().register(new RxJava2ResultSubscriber<>(emitter));
+                    SmartPayGlobalController.getInstance().register(new RxJava2ResultHandler<>(emitter));
 
                     callPay(params);
 

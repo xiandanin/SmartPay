@@ -38,7 +38,7 @@ public abstract class SmartPayWXPayEntryActivity extends Activity {
             result.put("type", String.valueOf(resp.getType()));
             result.put("open_id", resp.openId);
             result.put("transaction", resp.transaction);
-            SmartPayGlobalController.getInstance().notify(PayType.WECHAT, result);
+            SmartPayGlobalController.getInstance().requestHandler(PayType.WECHAT, result);
             finish();
         }
     };

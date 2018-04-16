@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.dyhdyh.smartpay.PayType;
 import com.dyhdyh.smartpay.SmartPayGlobalController;
-import com.dyhdyh.smartpay.adapter.rxjava2.RxJava2ResultSubscriber;
+import com.dyhdyh.smartpay.adapter.rxjava2.RxJava2ResultHandler;
 import com.dyhdyh.smartpay.alipay.AliPayBaseCall;
 
 import java.util.Map;
@@ -31,11 +31,11 @@ public class AliPayCallRxJava2Impl<SmartPayResult> extends AliPayBaseCall<Observ
             @Override
             public void subscribe(ObservableEmitter<SmartPayResult> emitter) throws Exception {
                 try {
-                    SmartPayGlobalController.getInstance().register(new RxJava2ResultSubscriber<>(emitter));
+                    SmartPayGlobalController.getInstance().register(new RxJava2ResultHandler<>(emitter));
 
                     Map<String, String> result = callPay(params);
 
-                    SmartPayGlobalController.getInstance().notify(PayType.ALIPAY, result);
+                    SmartPayGlobalController.getInstance().requestHandler(PayType.ALIPAY, result);
                 } catch (Exception e) {
                     e.printStackTrace();
                     emitter.onError(e);

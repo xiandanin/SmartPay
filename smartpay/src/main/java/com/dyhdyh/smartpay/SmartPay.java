@@ -30,6 +30,7 @@ public class SmartPay {
                 mInstance = new SmartPay(activity);
             }
         }
+        mInstance.mActivity = activity;
         return mInstance;
     }
 
@@ -47,16 +48,16 @@ public class SmartPay {
     }
 
 
-    public SmartPay converterAdapter(SmartPayConverterAdapter adapter) {
+    public SmartPay converterAdapter(SmartPayResultConverterAdapter adapter) {
         SmartPayGlobalController.getInstance().setConverterAdapter(adapter);
         return this;
     }
 
-    public SmartPay params(String paramsString) {
+    public SmartPay params(String paramsJson) {
         if (PayType.ALIPAY == mPayType) {
-            return params(AliPayParams.build(paramsString));
+            return params(AliPayParams.build(paramsJson));
         } else if (PayType.WECHAT == mPayType) {
-            return params(WeChatPayParams.build(paramsString));
+            return params(WeChatPayParams.build(paramsJson));
         } else {
             return this;
         }
@@ -69,7 +70,7 @@ public class SmartPay {
     }
 
     public SmartPay setOnPaymentListener(OnSmartPaymentListener listener) {
-        SmartPayGlobalController.getInstance().register(new DefaultResultSubscriber(listener));
+        SmartPayGlobalController.getInstance().register(new SimpleResultHandler(listener));
         return this;
     }
 

@@ -1,7 +1,5 @@
 package com.dyhdyh.smartpay;
 
-import android.util.Log;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,6 +11,11 @@ import java.util.Map;
  */
 public class SmartPayGlobalController {
     private static SmartPayGlobalController mInstance;
+
+    private Map<String, Object> mExtras = new LinkedHashMap<>();
+    private SmartPayResultHandler mHandler;
+    private SmartPayResultConverterAdapter mConverterAdapter;
+
 
     private SmartPayGlobalController() {
     }
@@ -26,12 +29,8 @@ public class SmartPayGlobalController {
         return mInstance;
     }
 
-    private Map<String, Object> mExtras = new LinkedHashMap<>();
-    private SmartPayResultSubscriber mSubscriber;
-    private SmartPayConverterAdapter mConverterFactory;
-
-    public void register(SmartPayResultSubscriber subscriber) {
-        mSubscriber = subscriber;
+    public void register(SmartPayResultHandler handler) {
+        mHandler = handler;
     }
 
     /**
@@ -47,14 +46,13 @@ public class SmartPayGlobalController {
         return mExtras;
     }
 
-    public void setConverterAdapter(SmartPayConverterAdapter adapter) {
-        mConverterFactory = adapter;
+    public void setConverterAdapter(SmartPayResultConverterAdapter adapter) {
+        mConverterAdapter = adapter;
     }
 
-    public void notify(PayType payType, Map<String, String> result) {
-        Log.d("------------------->", mSubscriber + " " + result);
-        if (mSubscriber != null) {
-            mSubscriber.onNotifyResult(mConverterFactory.adapt(payType).convert(result));
+    public void requestHandler(PayType payType, Map<String, String> result) {
+        if (mHandler != null) {
+            mHandler.onHandlerResult(mConverterAdapter.adapt(payType).convert(result));
         }
     }
 

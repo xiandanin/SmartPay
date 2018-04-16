@@ -7,7 +7,7 @@ import com.dyhdyh.smartpay.wechat.WeChatPayResultConverter;
  * @author dengyuhan
  *         created 2018/3/28 19:48
  */
-public class DefaultConverterAdapter implements SmartPayConverterAdapter {
+public class DefaultConverterAdapter implements SmartPayResultConverterAdapter {
 
     @Override
     public SmartPayResultConverter adapt(PayType payType) {

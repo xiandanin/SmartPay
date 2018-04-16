@@ -21,7 +21,7 @@ public class AliPayCallImpl extends AliPayBaseCall<Void> {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SDK_PAY_FLAG: {
-                    SmartPayGlobalController.getInstance().notify(PayType.ALIPAY, (Map<String, String>) msg.obj);
+                    SmartPayGlobalController.getInstance().requestHandler(PayType.ALIPAY, (Map<String, String>) msg.obj);
                     break;
                 }
             }
