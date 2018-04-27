@@ -21,7 +21,7 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <receiver
-            android:name=".wechat.WeChatPayRegister">
+            android:name=".wechat.WeChatPayRegisterReceiver">
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter>
