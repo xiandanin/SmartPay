@@ -13,16 +13,16 @@
 ### Gradle
 ```
 //必选
-implementation 'com.dyhdyh.smartpay:smartpay:1.0.0'
+implementation 'com.dyhdyh.smartpay:smartpay:1.0.1'
 
 //可选 如果需要RxJava1支持再引入
-implementation 'com.dyhdyh.smartpay:smartpay-adapter-rxjava:1.0.0'
+implementation 'com.dyhdyh.smartpay:smartpay-adapter-rxjava:1.0.1'
 
 //可选 如果需要RxJava2支持再引入
-implementation 'com.dyhdyh.smartpay:smartpay-adapter-rxjava2:1.0.0'
+implementation 'com.dyhdyh.smartpay:smartpay-adapter-rxjava2:1.0.1'
 
 //可选 提供获取测试参数的接口，如果需要测试支持再引入
-debugImplementation 'com.dyhdyh.smartpay:smartpay-test:1.0.0'
+debugImplementation 'com.dyhdyh.smartpay:smartpay-test:1.0.1'
 ```
 
 
